@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Age of Thorium: Humanity's Energy Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff88;
+            --secondary: #7c3aed;
+            --accent: #fbbf24;
+            --fusion: #ff00ff;
+            --quantum: #00ffff;
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151937;
+            --bg-card: #1e2341;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --glow: #00ff8850;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #00ff88 0%, #00b4d8 100%);
+            --gradient-future: linear-gradient(135deg, #ff00ff 0%, #00ffff 50%, #00ff88 100%);
+        }
+
+        [data-theme="light"] {
+            --primary: #059669;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --fusion: #d946ef;
+            --quantum: #0891b2;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+            --glow: #00ff8820;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Future Energy Grid Background */
+        .energy-grid {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(var(--primary) 1px, transparent 1px),
+                linear-gradient(90deg, var(--primary) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Energy Particles */
+        .energy-field {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .energy-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--quantum);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 10px var(--quantum),
+                0 0 20px var(--quantum),
+                0 0 30px var(--quantum);
+            animation: energyFlow 15s infinite linear;
+        }
+
+        @keyframes energyFlow {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(80vh) translateX(20px) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(20vh) translateX(-20px) scale(1);
+            }
+            100% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid var(--primary);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient-future);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logoGlow 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 10px var(--primary)); }
+            50% { filter: brightness(1.3) drop-shadow(0 0 20px var(--fusion)); }
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-item:before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-future);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .nav-item:hover:before {
+            width: 100%;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--gradient-future);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.2) rotate(180deg);
+            box-shadow: 0 0 30px var(--fusion);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+        }
+
+        /* Future Vision Hero */
+        .future-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+        }
+
+        .future-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            background: var(--gradient-future);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titlePulse 3s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { 
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(1.02);
+                filter: brightness(1.3);
+            }
+        }
+
+        .future-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.5s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Progress Timeline */
+        .progress-timeline {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                var(--primary) 0%, 
+                var(--fusion) 50%, 
+                var(--quantum) 100%);
+            transform: translateY(-50%);
+            animation: lineGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes lineGlow {
+            0%, 100% { box-shadow: 0 0 20px var(--primary); }
+            50% { box-shadow: 0 0 40px var(--fusion); }
+        }
+
+        .progress-nodes {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-node {
+            background: var(--bg-card);
+            border: 3px solid var(--primary);
+            border-radius: 20px;
+            padding: 1.5rem;
+            width: 180px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: nodeAppear 0.5s ease backwards;
+        }
+
+        .progress-node:nth-child(1) { animation-delay: 0.1s; }
+        .progress-node:nth-child(2) { animation-delay: 0.3s; }
+        .progress-node:nth-child(3) { animation-delay: 0.5s; }
+        .progress-node:nth-child(4) { animation-delay: 0.7s; }
+        .progress-node:nth-child(5) { animation-delay: 0.9s; }
+
+        @keyframes nodeAppear {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .progress-node:hover {
+            transform: translateY(-20px) scale(1.1);
+            border-color: var(--fusion);
+            box-shadow: 0 30px 60px rgba(255, 0, 255, 0.3);
+            background: linear-gradient(135deg, var(--bg-card), rgba(255, 0, 255, 0.1));
+        }
+
+        .node-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .node-title {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .node-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Breakthrough Technologies */
+        .breakthrough-section {
+            margin: 6rem 0;
+            position: relative;
+        }
+
+        .breakthrough-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .breakthrough-title {
+            font-size: 3rem;
+            font-weight: bold;
+            background: var(--gradient-future);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(255, 0, 255, 0.8); }
+        }
+
+        /* Technology Evolution Cards */
+        .tech-evolution {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .evolution-card {
+            background: linear-gradient(135deg, var(--bg-card), rgba(0, 255, 136, 0.05));
+            border: 2px solid transparent;
+            border-image: var(--gradient-future);
+            border-image-slice: 1;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: cardFloat 0.5s ease backwards;
+        }
+
+        .evolution-card:before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, var(--fusion) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: rotateGradient 10s linear infinite;
+        }
+
+        @keyframes rotateGradient {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .evolution-card:hover:before {
+            opacity: 0.1;
+        }
+
+        .evolution-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 255, 255, 0.3);
+        }
+
+        .evolution-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: iconSpin 20s linear infinite;
+        }
+
+        @keyframes iconSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .evolution-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .evolution-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .evolution-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            min-width: 100px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-future);
+            border-radius: 10px;
+            animation: fillBar 2s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+
+        .progress-fill:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.5), 
+                transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100%); }
+        }
+
+        /* Global Innovation Map */
+        .innovation-map {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, 
+                rgba(0, 255, 136, 0.05), 
+                rgba(255, 0, 255, 0.05));
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .country-node {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .country-node:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .country-flag {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .country-name {
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .country-status {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .country-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .country-progress-fill {
+            height: 100%;
+            background: var(--gradient-3);
+            border-radius: 2px;
+            animation: fillCountry 1.5s ease forwards;
+        }
+
+        @keyframes fillCountry {
+            from { width: 0; }
+        }
+
+        /* Future Applications Showcase */
+        .future-showcase {
+            margin: 6rem 0;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .showcase-item {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .showcase-item:hover {
+            border-color: var(--quantum);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 255, 255, 0.3);
+            background: linear-gradient(135deg, 
+                var(--bg-card), 
+                rgba(0, 255, 255, 0.1));
+        }
+
+        .showcase-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .showcase-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .showcase-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Energy Metrics Dashboard */
+        .metrics-dashboard {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, 
+                var(--bg-secondary), 
+                rgba(0, 255, 136, 0.05));
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .metrics-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: var(--gradient-future);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 3rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 0, 255, 0.2);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: var(--gradient-future);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            animation: countUp 2s ease;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-change {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Vision Statement */
+        .vision-section {
+            margin: 6rem 0;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, 
+                rgba(255, 0, 255, 0.05), 
+                rgba(0, 255, 255, 0.05));
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-title {
+            font-size: 3rem;
+            font-weight: bold;
+            background: var(--gradient-future);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .vision-text {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Floating Action Buttons */
+        .fab-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-future);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            animation: fabFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes fabFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .fab:hover {
+            transform: scale(1.2) rotate(180deg);
+            box-shadow: 0 20px 40px rgba(255, 0, 255, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 6rem;
+            border-top: 2px solid var(--primary);
+            background: linear-gradient(180deg, 
+                transparent, 
+                rgba(0, 255, 136, 0.05));
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .progress-nodes {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .progress-line {
+                width: 4px;
+                height: 100%;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .future-title {
+                font-size: 3rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .reactor-core {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            animation: coreRotate 3s linear infinite;
+        }
+
+        @keyframes coreRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .core-ring {
+            position: absolute;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .core-ring:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            animation: ringPulse 2s ease-in-out infinite;
+        }
+
+        .core-ring:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            border-color: var(--fusion);
+            animation: ringPulse 2s ease-in-out infinite 0.5s;
+        }
+
+        .core-ring:nth-child(3) {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            border-color: var(--quantum);
+            animation: ringPulse 2s ease-in-out infinite 1s;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .core-center {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-future);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 40px var(--primary);
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="reactor-core">
+                <div class="core-ring"></div>
+                <div class="core-ring"></div>
+                <div class="core-ring"></div>
+                <div class="core-center"></div>
+            </div>
+            <h2 style="color: var(--primary); margin-top: 2rem;">Initializing Future Energy Systems...</h2>
+        </div>
+    </div>
+
+    <!-- Energy Grid Background -->
+    <div class="energy-grid"></div>
+    <div class="energy-field" id="energyField"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span>⚛️</span>
+                <span>THORIUM REVOLUTION</span>
+            </div>
+            <nav class="nav">
+                <a href="#future" class="nav-item">Future</a>
+                <a href="#breakthrough" class="nav-item">Breakthroughs</a>
+                <a href="#evolution" class="nav-item">Evolution</a>
+                <a href="#vision" class="nav-item">Vision</a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Future Vision Hero -->
+        <section class="future-hero" id="future">
+            <h1 class="future-title">The Energy Revolution</h1>
+            <p class="future-subtitle">Transforming Humanity's Future with Thorium & AI 🚀</p>
+            
+            <!-- Progress Timeline -->
+            <div class="progress-timeline">
+                <div class="progress-line"></div>
+                <div class="progress-nodes">
+                    <div class="progress-node">
+                        <div class="node-icon">🔬</div>
+                        <div class="node-year">NOW</div>
+                        <div class="node-title">Research Phase</div>
+                    </div>
+                    <div class="progress-node">
+                        <div class="node-icon">⚡</div>
+                        <div class="node-year">2025</div>
+                        <div class="node-title">First Reactors</div>
+                    </div>
+                    <div class="progress-node">
+                        <div class="node-icon">🏭</div>
+                        <div class="node-year">2030</div>
+                        <div class="node-title">Commercial Scale</div>
+                    </div>
+                    <div class="progress-node">
+                        <div class="node-icon">🌍</div>
+                        <div class="node-year">2040</div>
+                        <div class="node-title">Global Deployment</div>
+                    </div>
+                    <div class="progress-node">
+                        <div class="node-icon">🚀</div>
+                        <div class="node-year">2050+</div>
+                        <div class="node-title">Space & Beyond</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breakthrough Technologies -->
+        <section class="breakthrough-section" id="breakthrough">
+            <div class="breakthrough-header">
+                <h2 class="breakthrough-title">Revolutionary Breakthroughs</h2>
+                <p style="color: var(--text-secondary); font-size: 1.2rem;">The Technologies Shaping Tomorrow</p>
+            </div>
+            
+            <div class="tech-evolution">
+                <div class="evolution-card">
+                    <div class="evolution-icon">🤖</div>
+                    <h3 class="evolution-title">AI-Controlled Reactors</h3>
+                    <p class="evolution-description">Autonomous operation with 99.9% safety prediction, self-optimizing fuel cycles, and predictive maintenance reducing downtime by 80%</p>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Development</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Deployment</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="evolution-card">
+                    <div class="evolution-icon">💫</div>
+                    <h3 class="evolution-title">Quantum Computing Integration</h3>
+                    <p class="evolution-description">Exponential speedup in neutron transport calculations, quantum-enhanced safety systems, and thorium-229 nuclear clocks for precision</p>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Research</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Application</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="evolution-card">
+                    <div class="evolution-icon">⚛️</div>
+                    <h3 class="evolution-title">Fusion-Fission Hybrids</h3>
+                    <p class="evolution-description">100 MW plants by 2030 with Q>30, breeding ratios of 1.8, combining fusion neutrons with thorium blankets</p>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Technology</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Construction</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 25%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="evolution-card">
+                    <div class="evolution-icon">🔥</div>
+                    <h3 class="evolution-title">Molten Salt Revolution</h3>
+                    <p class="evolution-description">Operating at 700°C with 59% efficiency, walk-away safety, 100% fuel utilization, and minimal waste</p>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Proven</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Scaling</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="evolution-card">
+                    <div class="evolution-icon">🚀</div>
+                    <h3 class="evolution-title">Space Propulsion Systems</h3>
+                    <p class="evolution-description">150 km/s delta-V capability, Mars in 3 months, enabling interstellar missions with thorium-powered spacecraft</p>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Design</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Testing</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="evolution-card">
+                    <div class="evolution-icon">⚡</div>
+                    <h3 class="evolution-title">Accelerator-Driven Systems</h3>
+                    <p class="evolution-description">Subcritical operation with k=0.98, waste transmutation reducing storage from 300,000 to 300 years</p>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Technology</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="evolution-progress">
+                        <span class="progress-label">Deployment</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 35%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Innovation Map -->
+        <section class="innovation-map">
+            <h2 class="map-title">Global Innovation Leaders</h2>
+            <div class="country-grid">
+                <div class="country-node">
+                    <div class="country-flag">🇨🇳</div>
+                    <div class="country-name">China</div>
+                    <div class="country-status">TMSR-LF1 Operational</div>
+                    <div class="country-progress">
+                        <div class="country-progress-fill" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="country-node">
+                    <div class="country-flag">🇪🇺</div>
+                    <div class="country-name">Europe</div>
+                    <div class="country-status">Copenhagen Atomics Lead</div>
+                    <div class="country-progress">
+                        <div class="country-progress-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="country-node">
+                    <div class="country-flag">🇺🇸</div>
+                    <div class="country-name">USA</div>
+                    <div class="country-status">Private Innovation</div>
+                    <div class="country-progress">
+                        <div class="country-progress-fill" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="country-node">
+                    <div class="country-flag">🇮🇱</div>
+                    <div class="country-name">Israel</div>
+                    <div class="country-status">Advanced Research</div>
+                    <div class="country-progress">
+                        <div class="country-progress-fill" style="width: 65%"></div>
+                    </div>
+                </div>
+                <div class="country-node">
+                    <div class="country-flag">🇯🇵</div>
+                    <div class="country-name">Japan</div>
+                    <div class="country-status">High-Temp Reactors</div>
+                    <div class="country-progress">
+                        <div class="country-progress-fill" style="width: 60%"></div>
+                    </div>
+                </div>
+                <div class="country-node">
+                    <div class="country-flag">🇨🇭</div>
+                    <div class="country-name">Switzerland</div>
+                    <div class="country-status">Transmutex ADS</div>
+                    <div class="country-progress">
+                        <div class="country-progress-fill" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="country-node">
+                    <div class="country-flag">🇷🇺</div>
+                    <div class="country-name">Russia</div>
+                    <div class="country-status">MSR Development</div>
+                    <div class="country-progress">
+                        <div class="country-progress-fill" style="width: 55%"></div>
+                    </div>
+                </div>
+                <div class="country-node">
+                    <div class="country-flag">🇮🇳</div>
+                    <div class="country-name">India</div>
+                    <div class="country-status">3-Stage Program</div>
+                    <div class="country-progress">
+                        <div class="country-progress-fill" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Applications Showcase -->
+        <section class="future-showcase" id="evolution">
+            <div class="breakthrough-header">
+                <h2 class="breakthrough-title">Future Applications</h2>
+                <p style="color: var(--text-secondary); font-size: 1.2rem;">Beyond Traditional Power Generation</p>
+            </div>
+            
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="showcase-icon">🌍</div>
+                    <h3 class="showcase-title">Terraforming Technology</h3>
+                    <p class="showcase-desc">Thorium-powered artificial suns for planetary transformation, atmosphere generation, and climate engineering on Mars and beyond</p>
+                </div>
+                
+                <div class="showcase-item">
+                    <div class="showcase-icon">🏗️</div>
+                    <h3 class="showcase-title">Megastructures</h3>
+                    <p class="showcase-desc">Powering space elevators, orbital rings, and eventually Dyson spheres for Type II civilization energy capture</p>
+                </div>
+                
+                <div class="showcase-item">
+                    <div class="showcase-icon">🧬</div>
+                    <h3 class="showcase-title">Medical Isotopes</h3>
+                    <p class="showcase-desc">Continuous production of rare medical isotopes for cancer treatment and advanced diagnostic imaging</p>
+                </div>
+                
+                <div class="showcase-item">
+                    <div class="showcase-icon">🌊</div>
+                    <h3 class="showcase-title">Desalination at Scale</h3>
+                    <p class="showcase-desc">Solving global water crisis with energy-intensive desalination powered by thorium reactors</p>
+                </div>
+                
+                <div class="showcase-item">
+                    <div class="showcase-icon">🔋</div>
+                    <h3 class="showcase-title">Synthetic Fuels</h3>
+                    <p class="showcase-desc">Carbon-neutral fuel production from atmospheric CO2 using abundant thorium energy</p>
+                </div>
+                
+                <div class="showcase-item">
+                    <div class="showcase-icon">🌌</div>
+                    <h3 class="showcase-title">Interstellar Travel</h3>
+                    <p class="showcase-desc">Thorium-antimatter hybrid propulsion enabling voyages to nearby star systems within human lifetimes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Energy Metrics Dashboard -->
+        <section class="metrics-dashboard">
+            <h2 class="metrics-title">Performance Revolution</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">Fuel Utilization</div>
+                    <span class="metric-change">↑ vs 5% conventional</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">59%</div>
+                    <div class="metric-label">Thermal Efficiency</div>
+                    <span class="metric-change">↑ vs 35% current</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$20</div>
+                    <div class="metric-label">Per MWh Target</div>
+                    <span class="metric-change">↓ 70% cost reduction</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">300yr</div>
+                    <div class="metric-label">Waste Storage</div>
+                    <span class="metric-change">↓ vs 300,000 years</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1.8</div>
+                    <div class="metric-label">Breeding Ratio</div>
+                    <span class="metric-change">↑ Fuel multiplication</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">99.9%</div>
+                    <div class="metric-label">AI Safety</div>
+                    <span class="metric-change">↑ Predictive accuracy</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Statement -->
+        <section class="vision-section" id="vision">
+            <h2 class="vision-title">The Path Forward</h2>
+            <p class="vision-text">
+                We stand at the threshold of humanity's greatest energy transformation. Thorium, enhanced by artificial intelligence and quantum computing, offers not just clean power but the foundation for humanity's expansion into the cosmos. From solving Earth's climate crisis to powering interstellar civilizations, this technology represents our bridge to a Type II civilization and beyond. The future isn't just bright—it's powered by thorium.
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div style="font-size: 1.2rem; color: var(--primary); margin-bottom: 1rem;">
+            ⚛️ The Age of Thorium: Nuclear Energy With Intelligence
+        </div>
+        <p style="color: var(--text-secondary); opacity: 0.8;">
+            Transforming humanity's future through revolutionary energy technology
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); opacity: 0.6;">
+            2025 Global Research Initiative | The Future is Nuclear
+        </p>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <div class="fab" onclick="scrollToTop()" title="Back to Top">⬆️</div>
+        <div class="fab" onclick="showInfo()" title="Learn More">💡</div>
+    </div>
+
+    <script>
+        // Create energy particles
+        function createEnergyParticles() {
+            const field = document.getElementById('energyField');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'energy-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                field.appendChild(particle);
+            }
+        }
+
+        // Theme toggle with animation
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            
+            // Pulse animation
+            body.style.transition = 'all 0.5s ease';
+            setTimeout(() => {
+                body.style.transition = 'all 0.3s ease';
+            }, 500);
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show additional info
+        function showInfo() {
+            alert('Thorium: The element that will power humanity\'s future!\n\n• 3-4x more abundant than uranium\n• 200x more energy dense than coal\n• Minimal weapons proliferation risk\n• Walk-away safe reactor designs\n• The key to interstellar civilization');
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('.nav-item').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 1s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.evolution-card, .showcase-item, .metric-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Animate progress bars on view
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-fill, .country-progress-fill');
+                    fills.forEach(fill => {
+                        const width = fill.style.width;
+                        fill.style.width = '0';
+                        setTimeout(() => {
+                            fill.style.transition = 'width 2s ease';
+                            fill.style.width = width;
+                        }, 300);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.evolution-card, .country-node').forEach(element => {
+            progressObserver.observe(element);
+        });
+
+        // Animate metric values
+        function animateValue(element, start, end, duration, suffix = '') {
+            const isFloat = !Number.isInteger(end);
+            const range = end - start;
+            const increment = range / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                if (isFloat) {
+                    element.textContent = current.toFixed(1) + suffix;
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 16);
+        }
+
+        // Initialize animations on load
+        window.addEventListener('load', () => {
+            createEnergyParticles();
+            
+            // Animate metrics
+            const metricObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.animated) {
+                        entry.target.animated = true;
+                        const value = entry.target.textContent;
+                        
+                        if (value === '100%') {
+                            entry.target.textContent = '0%';
+                            animateValue(entry.target, 0, 100, 2000, '%');
+                        } else if (value === '59%') {
+                            entry.target.textContent = '0%';
+                            animateValue(entry.target, 0, 59, 2000, '%');
+                        } else if (value === '$20') {
+                            entry.target.textContent = '$0';
+                            animateValue(entry.target, 0, 20, 2000, '');
+                        } else if (value === '300yr') {
+                            entry.target.textContent = '0yr';
+                            animateValue(entry.target, 0, 300, 2000, 'yr');
+                        } else if (value === '1.8') {
+                            entry.target.textContent = '0.0';
+                            animateValue(entry.target, 0, 1.8, 2000, '');
+                        } else if (value === '99.9%') {
+                            entry.target.textContent = '0.0%';
+                            animateValue(entry.target, 0, 99.9, 2000, '%');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.metric-value').forEach(metric => {
+                metricObserver.observe(metric);
+            });
+        });
+
+        // Interactive hover effects for progress nodes
+        document.querySelectorAll('.progress-node').forEach(node => {
+            node.addEventListener('mouseenter', () => {
+                const year = node.querySelector('.node-year').textContent;
+                const title = node.querySelector('.node-title').textContent;
+                
+                // Create tooltip
+                const tooltip = document.createElement('div');
+                tooltip.style.position = 'absolute';
+                tooltip.style.background = 'var(--bg-card)';
+                tooltip.style.border = '2px solid var(--primary)';
+                tooltip.style.borderRadius = '10px';
+                tooltip.style.padding = '1rem';
+                tooltip.style.bottom = '100%';
+                tooltip.style.left = '50%';
+                tooltip.style.transform = 'translateX(-50%)';
+                tooltip.style.marginBottom = '1rem';
+                tooltip.style.whiteSpace = 'nowrap';
+                tooltip.style.zIndex = '1000';
+                tooltip.style.boxShadow = '0 10px 30px rgba(0, 255, 136, 0.3)';
+                
+                const milestones = {
+                    'NOW': 'Active research in 35+ countries',
+                    '2025': 'China 10 MWe reactor online',
+                    '2030': 'Fusion-fission hybrids operational',
+                    '2040': '1000+ reactors worldwide',
+                    '2050+': 'Interstellar missions launched'
+                };
+                
+                tooltip.innerHTML = `<strong style="color: var(--primary)">${year}</strong><br>${milestones[year] || title}`;
+                node.appendChild(tooltip);
+            });
+            
+            node.addEventListener('mouseleave', () => {
+                const tooltip = node.querySelector('div[style*="absolute"]');
+                if (tooltip) tooltip.remove();
+            });
+        });
+
+        // Add pulse effect to clicked cards
+        document.querySelectorAll('.evolution-card, .showcase-item').forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.animation = 'none';
+                setTimeout(() => {
+                    card.style.animation = 'pulse 0.5s ease';
+                }, 10);
+            });
+        });
+
+        // Create pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Easter egg: Future mode
+        let keySequence = [];
+        document.addEventListener('keydown', (e) => {
+            keySequence.push(e.key);
+            keySequence = keySequence.slice(-6);
+            
+            if (keySequence.join('') === 'future') {
+                document.body.style.animation = 'rainbow 3s linear infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 5000);
+                
+                // Show future message
+                const msg = document.createElement('div');
+                msg.style.position = 'fixed';
+                msg.style.top = '50%';
+                msg.style.left = '50%';
+                msg.style.transform = 'translate(-50%, -50%)';
+                msg.style.fontSize = '3rem';
+                msg.style.fontWeight = 'bold';
+                msg.style.background = 'var(--gradient-future)';
+                msg.style.webkitBackgroundClip = 'text';
+                msg.style.webkitTextFillColor = 'transparent';
+                msg.style.zIndex = '10000';
+                msg.textContent = '🚀 FUTURE UNLOCKED! 🚀';
+                document.body.appendChild(msg);
+                
+                setTimeout(() => msg.remove(), 3000);
+            }
+        });
+
+        // Add rainbow animation
+        const rainbowStyle = document.createElement('style');
+        rainbowStyle.textContent = `
+            @keyframes rainbow {
+                0% { filter: hue-rotate(0deg) saturate(150%); }
+                100% { filter: hue-rotate(360deg) saturate(150%); }
+            }
+        `;
+        document.head.appendChild(rainbowStyle);
+    </script>
+</body>
+</html>
