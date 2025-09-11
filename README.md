@@ -1,4 +1,4 @@
-# ⚛️ The Thorium Revolution
+# 🌠 Transforming Humanity's Future with Thorium & AI 
 
 > *Reimagining nuclear energy for the anthropocene* ✨
 
